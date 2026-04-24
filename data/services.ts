@@ -1,0 +1,95 @@
+export const services = [
+  {
+    icon: "megaphone",
+    color: "text-rose-500 bg-rose-50",
+    category: "Informasi",
+    title: "Papan Pengumuman Digital",
+    desc: "Pusat informasi resmi untuk semua pengumuman penting dari pengurus RT/RW. Terarsip dan mudah dicari.",
+    tags: ["Real-time", "Terarsip", "Kategori"],
+  },
+  {
+    icon: "calendar",
+    color: "text-blue-500 bg-blue-50",
+    category: "Agenda",
+    title: "Kalender Kegiatan Bersama",
+    desc: "Semua jadwal gotong royong, rapat warga, dan acara bersama dalam satu tampilan kalender yang jelas.",
+    tags: ["Reminder", "RSVP", "Sinkron"],
+  },
+  {
+    icon: "file-text",
+    color: "text-purple-500 bg-purple-50",
+    category: "Partisipasi",
+    title: "Formulir Aspirasi Warga",
+    desc: "Kanal resmi untuk menyampaikan saran, keluhan, dan laporan kondisi lingkungan kepada pengurus.",
+    tags: ["Anonim", "Tertelusur", "Responsif"],
+  },
+  {
+    icon: "bell",
+    color: "text-amber-500 bg-amber-50",
+    category: "Notifikasi",
+    title: "Pemberitahuan Otomatis",
+    desc: "Sistem notifikasi yang memastikan setiap warga mendapat informasi tepat waktu di perangkat mereka.",
+    tags: ["Push", "Email", "WhatsApp"],
+  },
+  {
+    icon: "bar-chart",
+    color: "text-emerald-500 bg-emerald-50",
+    category: "Transparansi",
+    title: "Laporan Kegiatan",
+    desc: "Dokumentasi dan laporan kegiatan lingkungan yang dapat diakses oleh seluruh warga kapan saja.",
+    tags: ["Publik", "Download", "Historis"],
+  },
+  {
+    icon: "map",
+    color: "text-sky-500 bg-sky-50",
+    category: "Informasi",
+    title: "Peta & Fasilitas",
+    desc: "Informasi fasilitas umum, kontak darurat, dan peta area lingkungan yang selalu diperbarui.",
+    tags: ["Interaktif", "Update", "Darurat"],
+  },
+] as const;
+
+export type ServiceIconKey = (typeof services)[number]["icon"];
+
+export const calendarEvents = [
+  {
+    day: "25",
+    month: "Apr",
+    title: "Rapat Bulanan RT 03",
+    time: "19:30 WIB",
+    location: "Balai RW",
+    type: "Wajib",
+  },
+  {
+    day: "27",
+    month: "Apr",
+    title: "Gotong Royong Lingkungan",
+    time: "07:00 WIB",
+    location: "Seluruh Area",
+    type: "Sukarela",
+  },
+  {
+    day: "01",
+    month: "Mei",
+    title: "Hari Buruh – Libur Nasional",
+    time: "Seharian",
+    location: "-",
+    type: "Info",
+  },
+  {
+    day: "05",
+    month: "Mei",
+    title: "Posyandu Balita & Lansia",
+    time: "08:00 WIB",
+    location: "Posko Posyandu",
+    type: "Sukarela",
+  },
+  {
+    day: "10",
+    month: "Mei",
+    title: "Pembayaran Iuran Bulanan",
+    time: "Deadline",
+    location: "Bendahara RT",
+    type: "Wajib",
+  },
+];
