@@ -4,7 +4,6 @@ import Link from "next/link";
 import BlogAuthorAvatar from "./BlogAuthorAvatar";
 import { BlogPost } from "@/types/blogPost";
 
-// ✅ import icon langsung di component (AMAN)
 import { Lightbulb, Shield, Settings, Leaf } from "lucide-react";
 
 interface BlogCardProps {
@@ -12,7 +11,6 @@ interface BlogCardProps {
   index: number;
 }
 
-// ✅ hardcode di sini (bukan dari data file)
 const cardGradients = [
   "linear-gradient(135deg, #fde8d8, #f4b896)",
   "linear-gradient(135deg, #d8e8fd, #96b4f4)",
@@ -20,7 +18,6 @@ const cardGradients = [
   "linear-gradient(135deg, #fdfde8, #f4f496)",
 ];
 
-// ✅ mapping icon (bukan JSX langsung, tapi component reference dipakai di sini)
 const cardIcons = [
   { icon: Lightbulb, color: "text-orange-500" },
   { icon: Shield, color: "text-blue-500" },

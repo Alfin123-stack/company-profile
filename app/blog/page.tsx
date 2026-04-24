@@ -20,9 +20,6 @@ export default async function BlogPage() {
     ...Array.from(new Set(posts.map((p) => p.category))),
   ];
 
-  console.log("posts", posts);
-  console.log("categories", categories);
-
   return (
     <div className="pt-24 overflow-x-hidden">
       <BlogHero />

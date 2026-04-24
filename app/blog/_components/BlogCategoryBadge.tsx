@@ -17,7 +17,6 @@ export default function BlogCategoryBadge({
     );
   }
 
-  console.log("saf", category);
 
   return (
     <span
