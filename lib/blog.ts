@@ -10,10 +10,17 @@ function getBaseUrl() {
   return url;
 }
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
+export async function getBlogPosts(
+  category: string = "Semua",
+): Promise<BlogPost[]> {
   const baseUrl = getBaseUrl();
 
-  const res = await fetch(`${baseUrl}/api/blog`, {
+  const url =
+    category && category !== "Semua"
+      ? `${baseUrl}/api/blog?category=${encodeURIComponent(category)}`
+      : `${baseUrl}/api/blog`;
+
+  const res = await fetch(url, {
     cache: "no-store",
   });
 

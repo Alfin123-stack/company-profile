@@ -1,8 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import NavClient from "./NavClient";
+import { usePathname } from "next/navigation";
 
-// Server Component
 export default function Header() {
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(href + "/");
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="mx-4 mt-4">
@@ -25,19 +34,24 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Desktop Nav */}
+          {/* 🔥 Desktop Nav LANGSUNG FIX */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 rounded-xl text-sm font-medium text-mist hover:text-ink hover:bg-ink/5 transition-all duration-200">
+                scroll={false}
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  isActive(link.href)
+                    ? "bg-sage-500 text-white"
+                    : "text-mist hover:text-ink hover:bg-ink/5"
+                }`}>
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* CTA & Mobile Toggle */}
+          {/* CTA & Mobile */}
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
@@ -47,7 +61,7 @@ export default function Header() {
               }}>
               Aspirasi
             </Link>
-            {/* Mobile nav toggle - Client component */}
+
             <NavClient navLinks={navLinks} />
           </div>
         </div>

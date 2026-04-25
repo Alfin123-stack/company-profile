@@ -1,3 +1,4 @@
+"use client"
 interface CalendarEventItemProps {
   day: string;
   month: string;

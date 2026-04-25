@@ -1,4 +1,4 @@
-
+"use client"
 import type { ServiceIconKey } from "@/data/services";
 import ServiceIcon from "./ServiceIcon";
 
