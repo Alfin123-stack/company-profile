@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getBlogPosts } from "@/lib/blog";
 import BlogHero from "./_components/BlogHero";
-import BlogFeaturedPost from "./_components/BlogFeaturedPost";
 import BlogCardGrid from "./_components/BlogCardGrid";
 import BlogCTA from "./_components/BlogCTA";
 
