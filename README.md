@@ -1,90 +1,102 @@
-# RW Connect – Platform Informasi Lingkungan
+# 🏘️ RW Connect
 
-Platform digital untuk warga yang menghadirkan pengumuman, kalender kegiatan, dan aspirasi warga dalam satu tempat yang terorganisir.
+Platform informasi lingkungan digital untuk warga — pengumuman, kalender kegiatan, dan aspirasi warga dalam satu tempat.
+
+---
 
 ## 🚀 Cara Menjalankan
 
 ```bash
-# 1. Install dependencies
 npm install
-
-# 2. Jalankan development server
 npm run dev
-
-# 3. Buka browser
-http://localhost:3000
 ```
+
+Buka [http://localhost:3000](http://localhost:3000)
+
+---
 
 ## 📁 Struktur Project
 
 ```
-rw-connect/
-├── app/                        # App Router
-│   ├── layout.tsx              # Root Layout (Server Component) - Header & Footer global
-│   ├── page.tsx                # Halaman Beranda (Server Component)
-│   ├── globals.css             # Global styles + Tailwind
-│   ├── about/
-│   │   └── page.tsx            # Halaman Tentang (Server Component)
-│   ├── services/
-│   │   └── page.tsx            # Halaman Layanan (Server Component + data fetching)
-│   ├── contact/
-│   │   └── page.tsx            # Halaman Kontak (Server Component)
-│   ├── team/
-│   │   └── [id]/
-│   │       └── page.tsx        # Dynamic Route - Profil Tim (Server Component)
+├── app/
+│   ├── layout.tsx              # Root layout (Header + Footer global)
+│   ├── page.tsx                # Beranda
+│   ├── about/page.tsx          # Tentang
+│   ├── services/page.tsx       # Layanan
+│   ├── contact/page.tsx        # Kontak
 │   ├── blog/
-│   │   └── [slug]/
-│   │       └── page.tsx        # Dynamic Route - Artikel Blog (Server Component)
+│   │   ├── page.tsx            # Daftar artikel
+│   │   └── [slug]/page.tsx     # Detail artikel (dynamic route)
 │   └── api/
-│       └── announcements/
-│           └── route.ts        # Route Handler API (GET & POST)
+│       └── blog/
+│           ├── route.ts        # GET /api/blog
+│           └── [slug]/route.ts # GET /api/blog/[slug]
+│
 ├── components/
-│   ├── Header.tsx              # Header (Server Component)
-│   ├── Footer.tsx              # Footer (Server Component)
-│   ├── NavClient.tsx           # Mobile Navigation (Client Component) ✦
-│   ├── AnimatedSection.tsx     # Scroll Animation (Client Component) ✦
-│   ├── StatCounter.tsx         # Number Counter (Client Component) ✦
-│   ├── AnnouncementCard.tsx    # Card Pengumuman (Server Component)
-│   └── ContactForm.tsx         # Form Kontak (Client Component) ✦
+│   ├── Header.tsx              # Navbar global
+│   ├── Footer.tsx              # Footer global
+│   ├── AnnouncementCard.tsx    # Kartu pengumuman
+│   ├── AnimatedSection.tsx     # Animasi scroll
+│   ├── StatCounter.tsx         # Counter angka
+│   ├── ContactForm.tsx         # Form aspirasi
+│   ├── NavClient.tsx           # Mobile nav
+│   └── BackButton.tsx          # Tombol kembali
+│
+├── data/
+│   ├── announcement.ts         # Data dummy pengumuman
+│   ├── blog.ts                 # Data dummy artikel
+│   └── services.ts             # Data dummy layanan
+│
+├── types/
+│   ├── announcement.ts         # Type Announcement
+│   └── blogPost.ts             # Type BlogPost
+│
 └── lib/
-    └── data.ts                 # Data fetching functions
+    └── blog.ts                 # Helper fetch artikel
 ```
 
-## ✨ Fitur Teknis
+---
 
-### App Router
-- Layout global dengan `app/layout.tsx` untuk Header dan Footer
-- Halaman statis: `/`, `/about`, `/services`, `/contact`
-- Dynamic routes: `/team/[id]` dan `/blog/[slug]`
+## 🗺️ Halaman
 
-### Server vs Client Components
-- **Server Components**: Layout, semua halaman, Header, Footer, AnnouncementCard
-- **Client Components** (`'use client'`):
-  - `NavClient` – Mobile menu dengan state toggle
-  - `AnimatedSection` – IntersectionObserver scroll animation
-  - `StatCounter` – Animasi angka naik
-  - `ContactForm` – Form interaktif dengan validasi dan API call
+| Route | Keterangan |
+|-------|------------|
+| `/` | Beranda — hero, statistik, pengumuman, fitur |
+| `/about` | Tentang platform |
+| `/services` | Layanan & kalender kegiatan |
+| `/blog` | Daftar artikel |
+| `/blog/[slug]` | Detail artikel |
+| `/contact` | Form aspirasi warga |
 
-### Data Fetching
-- Server-side data fetching di `/services/page.tsx` dan `/team/[id]/page.tsx`
-- `generateStaticParams()` untuk pre-generate dynamic routes
-- `generateMetadata()` untuk SEO dinamis
+---
 
-### Route Handler (API)
-- `GET /api/announcements` – Ambil semua pengumuman (support filter & limit)
-- `POST /api/announcements` – Submit aspirasi warga
+## 🔌 API
 
-## 🎨 Design System
-- **Font**: Playfair Display (heading) + DM Sans (body)
-- **Warna**: Sage green + warm ivory background
-- **Style**: Premium editorial dengan grain texture overlay
+| Method | Endpoint | Keterangan |
+|--------|----------|------------|
+| GET | `/api/blog` | Semua artikel |
+| GET | `/api/blog/[slug]` | Detail artikel |
 
-## 📊 Rubrik Penilaian
-| Kriteria | Implementasi |
-|----------|-------------|
-| Struktur & routing Next.js | ✅ App Router, dynamic routes, layout |
-| Layout & navigasi | ✅ Global layout, responsive header dengan mobile nav |
-| Server vs Client component | ✅ Server Components + 4 Client Components |
-| Data fetching & API | ✅ Server-side fetch + Route Handler API |
-| Kerapian kode | ✅ TypeScript, modular, clean architecture |
-# company-profile
+---
+
+## ⚛️ Server vs Client Component
+
+| Komponen | Tipe | Alasan |
+|----------|------|--------|
+| Semua `page.tsx` | Server | Fetch data, tidak ada interaksi |
+| `Header.tsx` | Server | Hanya berisi Link |
+| `Footer.tsx` | Server | Konten statis |
+| `AnnouncementCard.tsx` | **Client** | Menyimpan Lucide icon di object |
+| `AnimatedSection.tsx` | **Client** | `IntersectionObserver` |
+| `StatCounter.tsx` | **Client** | `useState` animasi angka |
+| `ContactForm.tsx` | **Client** | `useState` + fetch POST |
+| `NavClient.tsx` | **Client** | `useState` toggle menu |
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js 14** — App Router
+- **TypeScript**
+- **Tailwind CSS**
+- **Lucide React** — Icons
