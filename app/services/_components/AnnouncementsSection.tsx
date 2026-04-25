@@ -1,7 +1,7 @@
 "use client";
 import AnimatedSection from "@/components/AnimatedSection";
 import AnnouncementCard from "@/components/AnnouncementCard";
-import { announcements } from "@/data/announcement";
+import { announcements } from "@/constants/announcement";
 
 export default function AnnouncementsSection() {
   return (

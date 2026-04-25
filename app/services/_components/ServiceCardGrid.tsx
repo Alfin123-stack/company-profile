@@ -2,7 +2,7 @@
 
 import AnimatedSection from "@/components/AnimatedSection";
 import ServiceCard from "./ServiceCard";
-import { services } from "@/data/services";
+import { services } from "@/constants/services";
 
 export default function ServiceCardGrid() {
   return (

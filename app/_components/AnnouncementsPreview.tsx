@@ -1,7 +1,7 @@
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import AnnouncementCard from "@/components/AnnouncementCard";
-import { announcements } from "@/data/announcement";
+import { announcements } from "@/constants/announcement";
 
 export default function AnnouncementsPreview() {
   const latestAnnouncements = announcements.slice(0, 3);

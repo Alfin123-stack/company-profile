@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import AnimatedSection from "@/components/AnimatedSection";
 import CalendarEventItem from "./CalendarEventItem";
-import { calendarEvents } from "@/data/services";
+import { calendarEvents } from "@/constants/services";
 
 export default function CalendarSection() {
   return (

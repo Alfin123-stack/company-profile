@@ -1,7 +1,7 @@
 "use client";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Sparkles, Target, Check } from "lucide-react";
-import { missions } from "@/data/about";
+import { missions } from "@/constants/about";
 
 export default function VisionMissionSection() {
   return (

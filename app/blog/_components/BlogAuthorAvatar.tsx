@@ -1,4 +1,4 @@
-import { iconMap } from "@/data/blog";
+import { iconMap } from "@/constants/blog";
 
 interface BlogAuthorAvatarProps {
   avatarKey: string;

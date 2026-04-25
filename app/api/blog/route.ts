@@ -1,16 +1,22 @@
-
-import { dummyBlogPosts } from "@/data/blog";
 import { NextResponse } from "next/server";
+import { readFileSync } from "fs";
+import { join } from "path";
+import { BlogPost } from "@/types/blogPost";
 
-// GET /api/blog — ambil semua artikel
-// Query params: ?category=Panduan | ?limit=3
+// Baca langsung dari file JSON di public/data/blog.json
+function getBlogData(): BlogPost[] {
+  const filePath = join(process.cwd(), "data", "blog.json");
+  const raw = readFileSync(filePath, "utf-8");
+  return JSON.parse(raw) as BlogPost[];
+}
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category");
     const limit = searchParams.get("limit");
 
-    let posts = dummyBlogPosts.map(({ content, ...rest }) => rest);
+    let posts = getBlogData().map(({ content, ...rest }) => rest);
 
     if (category && category !== "semua") {
       posts = posts.filter(

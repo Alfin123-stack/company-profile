@@ -1,5 +1,5 @@
-"use client"
-import type { ServiceIconKey } from "@/data/services";
+"use client";
+import type { ServiceIconKey } from "@/constants/services";
 import ServiceIcon from "./ServiceIcon";
 
 interface ServiceCardProps {

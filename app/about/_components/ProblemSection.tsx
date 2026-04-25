@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import AnimatedSection from "@/components/AnimatedSection";
 import ProblemCard from "./ProblemCard";
-import { problems } from "@/data/about";
+import { problems } from "@/constants/about";
 
 export default function ProblemSection() {
   return (

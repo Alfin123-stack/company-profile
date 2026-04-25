@@ -6,7 +6,7 @@ import {
   BarChart3,
   Map,
 } from "lucide-react";
-import type { ServiceIconKey } from "@/data/services";
+import type { ServiceIconKey } from "@/constants/services";
 
 const iconMap: Record<
   ServiceIconKey,

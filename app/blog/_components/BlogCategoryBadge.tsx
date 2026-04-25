@@ -1,4 +1,4 @@
-import { categoryColors } from "@/data/blog";
+import { categoryColors } from "@/constants/blog";
 
 interface BlogCategoryBadgeProps {
   category: string;
@@ -16,7 +16,6 @@ export default function BlogCategoryBadge({
       </span>
     );
   }
-
 
   return (
     <span

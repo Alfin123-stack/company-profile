@@ -1,7 +1,7 @@
 "use client";
 
 import AnimatedSection from "@/components/AnimatedSection";
-import { values } from "@/data/about";
+import { values } from "@/constants/about";
 
 export default function ValuesSection() {
   return (
