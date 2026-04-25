@@ -1,20 +1,41 @@
 import { BlogPost } from "@/types/blogPost";
 
+function getBaseUrl() {
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+
+  if (!url) {
+    throw new Error("NEXT_PUBLIC_BASE_URL belum diset di environment");
+  }
+
+  return url;
+}
+
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/blog`, { cache: "no-store" });
-  if (!res.ok) return [];
+  const baseUrl = getBaseUrl();
+
+  const res = await fetch(`${baseUrl}/api/blog`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    console.error("Failed fetch blog:", res.status);
+    return [];
+  }
+
   const json = await res.json();
   return json.data ?? [];
 }
 
 export async function fetchPost(slug: string): Promise<BlogPost | null> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const baseUrl = getBaseUrl();
+
     const res = await fetch(`${baseUrl}/api/blog/${slug}`, {
       cache: "no-store",
     });
+
     if (!res.ok) return null;
+
     const json = await res.json();
     return json.data ?? null;
   } catch (err) {
